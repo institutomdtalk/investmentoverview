@@ -206,17 +206,18 @@ html,body{width:100%;height:100%;background:var(--navy-deep);overflow:hidden;fon
 
 /* ── SLIDE 3 · BENEFITS ── */
 .benefits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;width:100%;margin-top:36px}
+.ben-card--bonus{grid-column:2/3;}
 .ben-card{
   padding:28px 26px 24px;
   background:rgba(5,13,26,.58);
-  border:1px solid rgba(196,164,90,.18);
+  border:1px solid rgba(11,29,58,.7);
   transition:all .4s;
   position:relative;
   backdrop-filter:blur(4px);
 }
 .ben-card:hover{
-  background:rgba(5,13,26,.75);
-  border-color:rgba(196,164,90,.38);
+  background:rgba(5,13,26,.80);
+  border-color:rgba(11,29,58,.95);
   transform:translateY(-3px);
 }
 .ben-number{font-family:"Cormorant Garamond",serif;font-size:13px;letter-spacing:3px;color:var(--gold);opacity:.45;margin-bottom:10px}
@@ -499,33 +500,38 @@ html,body{width:100%;height:100%;background:var(--navy-deep);overflow:hidden;fon
       <div class="benefits-grid">
         <div class="ben-card">
           <p class="ben-number">I</p>
-          <p class="ben-title">Duas Sessões Semanais</p>
-          <p class="ben-desc">Uma aula ao vivo via Google Meet, conversation-focused, com feedback imediato. Uma aula assíncrona para avançar no seu ritmo, sem comprometer a agenda clínica.</p>
+          <p class="ben-title">Composição do Curso</p>
+          <p class="ben-desc">O programa inclui duas aulas semanais — uma via Google Meet (50 minutos), em dia e horário fixos previamente ajustados, e uma aula assíncrona para acelerar o aprendizado.</p>
         </div>
         <div class="ben-card">
           <p class="ben-number">II</p>
-          <p class="ben-title">Materiais 100% Exclusivos</p>
-          <p class="ben-desc">Cada recurso desenvolvido especificamente para você — sua especialidade, seus objetivos, seus gaps. Acompanhando sua realidade semana a semana.</p>
+          <p class="ben-title">Cronograma Individualizado</p>
+          <p class="ben-desc">O cronograma é criado e definido mensalmente, conforme as necessidades, ritmo, nível de absorção e histórico prévio de cada aluno. A estratégia de estudo também é individualizada, sendo definida ao longo do curso de acordo com a evolução de cada aluno.</p>
         </div>
         <div class="ben-card">
           <p class="ben-number">III</p>
-          <p class="ben-title">Acesso Vitalício ao Portal</p>
-          <p class="ben-desc">Todo o conteúdo produzido ao longo do programa permanece disponível para sempre. O Portal MD Talk é a extensão digital permanente da sua formação.</p>
+          <p class="ben-title">Material 100% Personalizado</p>
+          <p class="ben-desc">Cada recurso é desenhado pelo departamento de engenharia de conteúdo e desenvolvido semanalmente para cada aluno, conforme sua realidade, especialidade e assuntos de interesse.</p>
         </div>
         <div class="ben-card">
           <p class="ben-number">IV</p>
-          <p class="ben-title">Cronograma Individualizado</p>
-          <p class="ben-desc">Cronograma criado especificamente para você — carga prévia, gaps, forma de absorção e velocidade. Atravessando todos os níveis ao mesmo tempo.</p>
+          <p class="ben-title">Plataforma e Recursos Exclusivos</p>
+          <p class="ben-desc">Acesso à plataforma própria (web) com recursos exclusivos: flashcards, anotação de termos, acervo de infográficos, biblioteca de textos e inteligência artificial para suporte autônomo.</p>
         </div>
         <div class="ben-card">
           <p class="ben-number">V</p>
-          <p class="ben-title">Flexibilidade de Agenda</p>
-          <p class="ben-desc">Médico não tem horário fixo — e o programa respeita isso. Plantões, congressos e emergências são parte da vida. Reorganização com comunicação antecipada.</p>
+          <p class="ben-title">Flexibilidade na Agenda</p>
+          <p class="ben-desc">Remanejamento de aula é possível em casos excepcionais, mediante comunicação antecipada.</p>
         </div>
         <div class="ben-card">
           <p class="ben-number">VI</p>
-          <p class="ben-title">Suporte Direto via WhatsApp</p>
-          <p class="ben-desc">Dúvidas não esperam a próxima aula. Acesso direto pelo WhatsApp para resolver pontos do idioma quando surgem — porque a evolução não para.</p>
+          <p class="ben-title">Suporte Entre-Aulas</p>
+          <p class="ben-desc">Acesso direto à mentora pelo WhatsApp (24/7) para resolver dúvidas quando surgirem.</p>
+        </div>
+        <div class="ben-card ben-card--bonus">
+          <p class="ben-number">VII</p>
+          <p class="ben-title">Inglês para Viagens <em style="font-size:11px;letter-spacing:2px;font-style:normal;opacity:.6;font-family:'Raleway',sans-serif;text-transform:uppercase;">Bônus</em></p>
+          <p class="ben-desc">Os planos incluem um curso completo de inglês para viagens, com liberação de um módulo por mês (total de oito módulos).</p>
         </div>
       </div>
     </div>
@@ -597,6 +603,12 @@ s1.addEventListener('mouseleave', zoomOut);
 // Mobile: touch anywhere on slide 1
 s1.addEventListener('touchstart', () => { zoomIn(); }, {passive:true});
 s1.addEventListener('touchend', () => { setTimeout(zoomOut, 800); }, {passive:true});
+
+// Hover mais escuro no slide 2
+const s2pageEl = document.getElementById('s2-page');
+const s2overlay = document.getElementById('s2-page-overlay');
+s2pageEl.addEventListener('mouseenter', () => { s2overlay.style.background = 'rgba(5,13,26,.85)'; });
+s2pageEl.addEventListener('mouseleave', () => { s2overlay.style.background = 'rgba(5,13,26,.70)'; });
 });
 </script>
 </html>
