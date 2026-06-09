@@ -302,12 +302,6 @@ html,body{width:100%;height:100%;background:var(--navy-deep);overflow:hidden;fon
   transition:background .6s ease;
   z-index:1;
 }
-#s3.s3-zoom .s3-bg{
-  filter:blur(12px);transform:scale(1.15);
-}
-#s3.s3-zoom .s3-overlay{
-  background:rgba(5,13,26,.85);
-}
 
 </style>
 </head>
@@ -620,10 +614,11 @@ function zoomOut(){ s1.classList.remove('hero-zoom'); }
 s1.addEventListener('mouseenter', zoomIn);
 s1.addEventListener('mouseleave', zoomOut);
 
-// S3 hover
+// Hover slide 3 — mesmo padrão do slide 2
+const s3overlay = document.querySelector('#s3 .s3-overlay');
 const s3el = document.getElementById('s3');
-s3el.addEventListener('mouseenter', () => s3el.classList.add('s3-zoom'));
-s3el.addEventListener('mouseleave', () => s3el.classList.remove('s3-zoom'));
+s3el.addEventListener('mouseenter', () => { s3overlay.style.background = 'rgba(5,13,26,.85)'; });
+s3el.addEventListener('mouseleave', () => { s3overlay.style.background = 'rgba(5,13,26,.72)'; });
 
 // Mobile: touch anywhere on slide 1
 s1.addEventListener('touchstart', () => { zoomIn(); }, {passive:true});
