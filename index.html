@@ -231,8 +231,10 @@ html,body{width:100%;height:100%;background:var(--navy-deep);overflow:hidden;fon
 .ben-desc{font-family:"Raleway",sans-serif;font-size:12px;font-weight:300;color:rgba(255,255,255,.65);line-height:1.85;margin-top:10px}
 
 /* ── SLIDE 4 · POLICY ── */
-.policy-row{display:grid;grid-template-columns:1px 1fr;gap:0 32px;align-items:start;margin-bottom:36px}
+.policy-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px 72px;width:100%}
+.policy-row{display:grid;grid-template-columns:1px 1fr;gap:0 32px;align-items:start;margin-bottom:0}
 .policy-line{width:1px;background:rgba(196,164,90,.3);align-self:stretch}
+@media(max-width:860px){.policy-grid{grid-template-columns:1fr;gap:36px}}
 .policy-label{font-family:"Raleway",sans-serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.6;margin-bottom:8px}
 .policy-text{font-family:"Cormorant Garamond",serif;font-size:24px;font-weight:300;color:var(--cream);line-height:1.65}
 
@@ -387,10 +389,10 @@ html,body{width:100%;height:100%;background:var(--navy-deep);overflow:hidden;fon
     <div class="s4-overlay" style="position:absolute;inset:0;background:rgba(5,13,26,.70);transition:background .6s ease;z-index:1;"></div>
     <div class="geo ring" style="width:420px;height:420px;bottom:-170px;right:-150px;opacity:.3;animation-delay:1s"></div>
     <div class="geo ring" style="width:160px;height:160px;top:80px;right:80px;opacity:.35;animation-delay:4s"></div>
-    <div id="s4-content" style="width:100%;max-width:620px;position:relative;z-index:2;">
+    <div id="s4-content" style="width:100%;max-width:1180px;position:relative;z-index:2;">
       <p class="overline" style="text-align:left">Termos & Condições</p>
-      <h2 class="serif-title" style="font-size:clamp(42px,5.5vw,60px);text-align:left;margin-bottom:40px">The <em class="gold-em">Terms</em></h2>
-      <div style="max-width:600px;width:100%">
+      <h2 class="serif-title" style="font-size:clamp(42px,5.5vw,60px);text-align:left;margin-bottom:56px">The <em class="gold-em">Terms</em></h2>
+      <div class="policy-grid">
         <div class="policy-row">
           <div class="policy-line"></div>
           <div>
@@ -412,7 +414,7 @@ html,body{width:100%;height:100%;background:var(--navy-deep);overflow:hidden;fon
             <p class="policy-text">Condições <em style="font-style:italic;color:var(--gold)">diferenciadas</em> disponíveis para pagamento anual via cartão de crédito. Consulte para detalhes.</p>
           </div>
         </div>
-        <div class="policy-row" style="margin-bottom:0">
+        <div class="policy-row">
           <div class="policy-line"></div>
           <div>
             <p class="policy-label">Validade desta Proposta</p>
