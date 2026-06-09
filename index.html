@@ -298,7 +298,7 @@ html,body{width:100%;height:100%;background:var(--navy-deep);overflow:hidden;fon
 }
 #s3 .s3-overlay{
   position:absolute;inset:0;
-  background:rgba(5,13,26,.72);
+  background:rgba(5,13,26,.70);
   transition:background .6s ease;
   z-index:1;
 }
@@ -599,7 +599,7 @@ s1.addEventListener('mouseleave', zoomOut);
 const s3overlay = document.querySelector('#s3 .s3-overlay');
 const s3content = document.getElementById('s3-content');
 s3content.addEventListener('mouseenter', () => { s3overlay.style.background = 'rgba(5,13,26,.85)'; });
-s3content.addEventListener('mouseleave', () => { s3overlay.style.background = 'rgba(5,13,26,.72)'; });
+s3content.addEventListener('mouseleave', () => { s3overlay.style.background = 'rgba(5,13,26,.70)'; });
 
 // Mobile: touch anywhere on slide 1
 s1.addEventListener('touchstart', () => { zoomIn(); }, {passive:true});
