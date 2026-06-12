@@ -463,12 +463,6 @@ html,body{width:100%;height:100%;background:var(--navy-deep);overflow:hidden;fon
           </tr>
         </tbody>
       </table>
-      <div class="anual-badge">✦ &nbsp; Condições diferenciadas para pagamento anual via cartão</div>
-      <div class="payment-row">
-        <div class="pay-chip">PIX</div>
-        <div class="pay-chip">Cartão de Crédito</div>
-        <div class="pay-chip">Transferência Bancária</div>
-      </div>
     </div>
   </div>
 
@@ -671,23 +665,22 @@ document.addEventListener("keydown",e=>{
   if(e.key==="ArrowRight"||e.key==="ArrowDown")navigate(1);
   if(e.key==="ArrowLeft"||e.key==="ArrowUp")navigate(-1);
 });
-let tx=0,ty=0;
-document.getElementById("deck").addEventListener("touchstart",e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY;},{passive:true});
-document.getElementById("deck").addEventListener("touchend",e=>{
-  const dx=e.changedTouches[0].clientX-tx;
-  const dy=e.changedTouches[0].clientY-ty;
-  // só navega se o gesto for predominantemente horizontal (não interfere no scroll vertical)
-  if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)*1.5)navigate(dx<0?1:-1);
+// ── SWIPE NAVIGATION (global, funciona em qualquer slide) ──
+let _sx=0,_sy=0,_st=0,_swipeReady=false;
+document.addEventListener('touchstart',e=>{
+  if(e.touches.length!==1){_swipeReady=false;return;}
+  const t=e.touches[0];
+  _sx=t.clientX;_sy=t.clientY;_st=Date.now();_swipeReady=true;
 },{passive:true});
-
-// Swipe horizontal também na página standalone do slide 2
-const s2pg = document.getElementById('s2-page');
-let s2x=0,s2y=0;
-s2pg.addEventListener("touchstart",e=>{s2x=e.touches[0].clientX;s2y=e.touches[0].clientY;},{passive:true});
-s2pg.addEventListener("touchend",e=>{
-  const dx=e.changedTouches[0].clientX-s2x;
-  const dy=e.changedTouches[0].clientY-s2y;
-  if(Math.abs(dx)>60 && Math.abs(dx)>Math.abs(dy)*2)navigate(dx<0?1:-1);
+document.addEventListener('touchend',e=>{
+  if(!_swipeReady)return;
+  _swipeReady=false;
+  const t=e.changedTouches[0];
+  const dx=t.clientX-_sx, dy=t.clientY-_sy, dt=Date.now()-_st;
+  // gesto rápido, predominantemente horizontal, com distância mínima
+  if(dt<800 && Math.abs(dx)>40 && Math.abs(dx)>Math.abs(dy)*1.5){
+    navigate(dx<0?1:-1); // dx<0 = dedo da direita p/ esquerda = próximo
+  }
 },{passive:true});
 
 
