@@ -33,8 +33,8 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --navy:#0B1D3A;--navy-deep:#050D1A;--navy-mid:#0F2645;--navy-light:#163158;
-  --gold:#C4A45A;--gold-light:#D4BA7A;--gold-pale:#ffffff;
-  --cream:rgba(255,255,255,1);--muted:rgba(255,255,255,.42);
+  --gold:#C4A45A;--gold-light:#D4BA7A;--gold-pale:#E8D9B0;
+  --cream:rgba(255,255,255,.88);--muted:rgba(255,255,255,.42);
   --aurora1:#1A3A6B;--aurora2:#1E4A8A;--aurora3:#2255A0;
 }
 html,body{width:100%;height:100%;background:var(--navy-deep);overflow:hidden;font-family:"Raleway",sans-serif;-webkit-text-size-adjust:100%}
@@ -108,7 +108,7 @@ html,body{width:100%;height:100%;background:var(--navy-deep);overflow:hidden;fon
 
 /* ── OVERLINE / TITLES ── */
 .overline{font-family:"Raleway",sans-serif;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;opacity:.8}
-.serif-title{font-family:"Cormorant Garamond",serif;font-weight:300;color:var(--gold-pale);line-height:1.15}
+.serif-title{font-family:"Cormorant Garamond",serif;font-weight:300;color:#fff;line-height:1.15}
 .gold-em{font-style:italic;color:var(--gold);font-weight:400}
 .muted-desc{font-family:"Raleway",sans-serif;font-weight:300;color:var(--muted);font-size:14px;letter-spacing:.5px;line-height:1.8}
 
@@ -122,7 +122,7 @@ html,body{width:100%;height:100%;background:var(--navy-deep);overflow:hidden;fon
 
 /* ── SLIDE 1 · HERO ── */
 #s1 .hero-tag{font-family:"Cormorant Garamond",serif;font-size:13px;font-style:italic;color:var(--muted);letter-spacing:1px;margin-bottom:10px}
-#s1 .hero-title{font-family:"Cormorant Garamond",serif;font-size:clamp(64px,9vw,96px);font-weight:300;color:var(--gold-pale);line-height:1;text-align:center;text-shadow:0 2px 32px rgba(0,0,0,.85),0 4px 64px rgba(0,0,0,.6),0 0 120px rgba(0,0,0,.4)}
+#s1 .hero-title{font-family:"Cormorant Garamond",serif;font-size:clamp(64px,9vw,96px);font-weight:300;color:#fff;line-height:1;text-align:center;text-shadow:0 2px 32px rgba(0,0,0,.85),0 4px 64px rgba(0,0,0,.6),0 0 120px rgba(0,0,0,.4)}
 #s1 .hero-sub{font-family:"Raleway",sans-serif;font-weight:300;font-size:13px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-top:10px;text-shadow:0 2px 20px rgba(0,0,0,.9),0 4px 40px rgba(0,0,0,.7)}
 
 /* ── SLIDE 1 · HERO BG IMAGE ── */
@@ -168,61 +168,38 @@ html,body{width:100%;height:100%;background:var(--navy-deep);overflow:hidden;fon
 .scroll-ind{margin-top:52px;display:flex;flex-direction:column;align-items:center;gap:0}
 .scroll-line{display:none}
 .scroll-text{display:none}
-/* Opacity Bloom "Arraste para visualizar" */
+/* Opacity Bloom "Visualizar Proposta" */
 .visualizar-btn{
-  margin-top:48px;
+  margin-top:52px;
   font-family:"Raleway",sans-serif;
   font-size:11px;
   font-weight:400;
   letter-spacing:4px;
   text-transform:uppercase;
-  color:#fff;
+  color:var(--muted);
   cursor:pointer;
   display:inline-flex;
-  flex-direction:column;
   align-items:center;
-  gap:14px;
+  gap:12px;
   padding:0;
   background:none;
   border:none;
-  transition:letter-spacing .4s ease;
+  transition:color .5s ease, text-shadow .5s ease, letter-spacing .4s ease;
+  animation:bloomPulse 3s ease-in-out infinite;
   text-shadow:0 2px 16px rgba(0,0,0,.95),0 4px 32px rgba(0,0,0,.8);
 }
 .visualizar-btn::before{display:none}
 .visualizar-btn::after{display:none}
 .visualizar-btn:hover{
+  color:var(--gold-pale);
   letter-spacing:6px;
+  text-shadow:0 0 48px rgba(196,164,90,.45), 0 0 20px rgba(196,164,90,.2);
+  animation:none;
 }
 
-/* Swipe icon — hand sliding right-to-left, white thin lines */
-.swipe-icon{
-  display:block;
-  overflow:visible;
-  filter:drop-shadow(0 2px 12px rgba(0,0,0,.9));
-}
-.swipe-icon .swipe-hand{
-  transform-origin:center;
-  animation:swipeHandMove 2.4s cubic-bezier(.45,.05,.55,.95) infinite;
-}
-.swipe-icon .swipe-trail path{
-  animation:swipeTrailFade 2.4s ease-in-out infinite;
-}
-.swipe-icon .swipe-trail path:nth-child(1){animation-delay:0s}
-.swipe-icon .swipe-trail path:nth-child(2){animation-delay:.1s}
-.swipe-icon .swipe-trail path:nth-child(3){animation-delay:.2s}
-
-@keyframes swipeHandMove{
-  0%   {transform:translateX(10px); opacity:.35;}
-  20%  {transform:translateX(10px); opacity:1;}
-  60%  {transform:translateX(-10px); opacity:1;}
-  80%  {transform:translateX(-10px); opacity:.35;}
-  100% {transform:translateX(10px); opacity:.35;}
-}
-@keyframes swipeTrailFade{
-  0%,15%,100% {opacity:0;}
-  35%         {opacity:.7;}
-  55%         {opacity:.4;}
-  75%         {opacity:0;}
+@keyframes bloomPulse{
+  0%,100%{opacity:.38;text-shadow:none}
+  50%{opacity:.72;text-shadow:0 0 32px rgba(196,164,90,.25)}
 }
 
 /* ── SLIDE 2 · INVESTMENT ── */
@@ -275,7 +252,7 @@ html,body{width:100%;height:100%;background:var(--navy-deep);overflow:hidden;fon
   border-bottom:1px solid rgba(196,164,90,.28);
 }
 .ben-card:hover .ben-title{color:var(--gold-light)}
-.ben-desc{font-family:"Raleway",sans-serif;font-size:12px;font-weight:300;color:rgba(255,255,255,1);line-height:1.85;margin-top:10px}
+.ben-desc{font-family:"Raleway",sans-serif;font-size:12px;font-weight:300;color:rgba(255,255,255,.65);line-height:1.85;margin-top:10px}
 
 /* ── SLIDE 4 · POLICY ── */
 .policy-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px 72px;width:100%}
@@ -285,8 +262,8 @@ html,body{width:100%;height:100%;background:var(--navy-deep);overflow:hidden;fon
 .policy-label{font-family:"Raleway",sans-serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.6;margin-bottom:8px}
 .policy-text{font-family:"Cormorant Garamond",serif;font-size:24px;font-weight:300;color:var(--cream);line-height:1.65}
 
-/* ── SLIDE 6 · MENTORS ── */
-#s6{padding:0;flex-direction:row}
+/* ── SLIDE 5 · MENTORS ── */
+#s5{padding:0;flex-direction:row}
 .mentor-photo-side{flex:0 0 44%;position:relative;min-height:100%;overflow:hidden}
 .mentor-photo-side img{width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block}
 .mentor-photo-side::after{
@@ -297,26 +274,48 @@ html,body{width:100%;height:100%;background:var(--navy-deep);overflow:hidden;fon
 .mentor-content{flex:1;display:flex;flex-direction:column;justify-content:center;padding:80px 70px 80px 56px;position:relative;z-index:2;overflow-y:auto}
 .mentor-brand-tag{font-family:"Raleway",sans-serif;font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);opacity:.6;margin-bottom:32px;display:flex;align-items:center;gap:12px}
 .mentor-brand-tag::before{content:"";width:20px;height:1px;background:var(--gold);opacity:.5;display:block}
-.mentor-title{font-family:"Cormorant Garamond",serif;font-size:clamp(30px,3.8vw,50px);font-weight:300;color:var(--gold-pale);line-height:1.18;margin-bottom:18px}
+.mentor-title{font-family:"Cormorant Garamond",serif;font-size:clamp(30px,3.8vw,50px);font-weight:300;color:#fff;line-height:1.18;margin-bottom:18px}
 .mentor-title em{font-style:italic;color:var(--gold)}
 .mentor-tagline{font-family:"Raleway",sans-serif;font-size:12px;font-weight:300;color:var(--muted);line-height:1.9;max-width:380px;margin-bottom:40px;letter-spacing:.3px}
 .mentor-persons{display:flex;flex-direction:column;gap:22px;margin-bottom:40px}
 .person-row{display:flex;align-items:flex-start;gap:18px}
 .person-line{width:1px;height:44px;background:rgba(196,164,90,.3);flex-shrink:0;margin-top:4px}
-.person-name{font-family:"Cormorant Garamond",serif;font-size:26px;font-weight:400;color:var(--gold-pale);margin-bottom:3px}
+.person-name{font-family:"Cormorant Garamond",serif;font-size:26px;font-weight:400;color:#fff;margin-bottom:3px}
 .person-role{font-family:"Raleway",sans-serif;font-size:11.5px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.6}
 .companies-row{display:flex;gap:24px;padding-top:28px;border-top:1px solid rgba(196,164,90,.12);flex-wrap:wrap}
 .company-tag{font-family:"Raleway",sans-serif;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);line-height:1.7}
 .company-tag strong{color:var(--gold);font-weight:500;display:block;margin-bottom:2px}
 .sep-dot{color:rgba(196,164,90,.25);font-size:20px;align-self:center}
 
-/* ── SLIDE 7 · CTA ── */
+/* ── SLIDE 6 · CTA ── */
 #s7 .cta-pre{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:28px;color:var(--muted);margin-bottom:18px}
-#s7 .cta-main{font-family:"Cormorant Garamond",serif;font-size:clamp(40px,6vw,68px);font-weight:300;color:var(--gold-pale);line-height:1.2;max-width:640px;margin:0 auto}
+#s7 .cta-main{font-family:"Cormorant Garamond",serif;font-size:clamp(40px,6vw,68px);font-weight:300;color:#fff;line-height:1.2;max-width:640px;margin:0 auto}
 #s7 .cta-main em{color:var(--gold);font-style:italic}
 #s7 .cta-btn{display:inline-flex;align-items:center;gap:12px;margin-top:52px;padding:17px 44px;background:var(--gold);color:var(--navy-deep);font-family:"Raleway",sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:600;cursor:pointer;border:none;transition:all .3s;text-decoration:none}
 #s7 .cta-btn:hover{background:var(--gold-light);transform:translateY(-2px)}
 #s7 .cta-note{margin-top:22px;font-family:"Raleway",sans-serif;font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase}
+
+/* ── SLIDE 4 · CURATION ── */
+.curation-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px 72px;width:100%}
+.curation-col{}
+.curation-items{display:flex;flex-direction:column;gap:12px;margin-top:4px}
+.curation-item{display:flex;align-items:baseline;gap:10px;font-family:"Cormorant Garamond",serif;font-size:20px;font-weight:300;color:rgba(255,255,255,.82);line-height:1.4}
+.curation-dot{flex:0 0 5px;height:5px;width:5px;border-radius:50%;background:var(--gold);opacity:.8;margin-top:2px}
+.curation-price-block{display:flex;flex-direction:column;gap:0}
+.curation-price-row{display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;padding:24px 0}
+.curation-price-label{font-family:"Raleway",sans-serif;font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#fff;margin-bottom:5px}
+.curation-price-sub{font-family:"Raleway",sans-serif;font-size:11px;color:var(--muted);letter-spacing:1px}
+.curation-price-val{font-family:"Cormorant Garamond",serif;font-size:34px;font-weight:300;color:#fff;text-align:right;white-space:nowrap;line-height:1.1}
+.curation-divider{width:100%;height:1px;background:rgba(196,164,90,.2)}
+@media(max-width:768px){
+  .curation-grid{grid-template-columns:1fr;gap:36px}
+  .curation-price-row{grid-template-columns:1fr;gap:8px}
+  .curation-price-val{text-align:left;font-size:28px}
+  #s7 .cta-pre{font-size:22px}
+  #s7 .cta-main{font-size:clamp(34px,9vw,48px)}
+  #s7 .cta-btn{padding:15px 32px;margin-top:42px;font-size:10px;letter-spacing:2.5px}
+  #s7 .cta-note{font-size:9px;letter-spacing:1.5px;padding:0 16px;line-height:1.8}
+}
 
 /* ── SLIDE 2 · BG IMAGE ── */
 
@@ -366,7 +365,7 @@ html,body{width:100%;height:100%;background:var(--navy-deep);overflow:hidden;fon
   }
   /* auto-margin trick: centraliza quando cabe, rola quando transborda */
   #s3-content,#s4-content{margin-top:auto;margin-bottom:auto}
-  #s1,#s7{justify-content:center;overflow:hidden}
+  #s1,#s6{justify-content:center;overflow:hidden}
 
   /* geometria decorativa mais discreta */
   .geo{opacity:.5!important}
@@ -396,21 +395,15 @@ html,body{width:100%;height:100%;background:var(--navy-deep);overflow:hidden;fon
   .payment-row{gap:10px;margin-top:18px}
   .pay-chip{padding:6px 13px;font-size:11px;letter-spacing:1.5px}
 
-  /* ── Slide 4 · Curadoria ── */
-  #s4c-content{padding:0 16px}
-  #s4c-content > div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
-  #s4c-content > div[style*="grid-template-columns:1fr 1fr"] > div[style*="border-right"]{border-right:none!important;border-bottom:1px solid rgba(196,164,90,.2);padding-right:0;padding-bottom:24px;margin-bottom:4px}
-  #s4c-content > div[style*="grid-template-columns:1fr 1fr"] > div:last-child{padding-left:0}
-
-  /* ── Slide 5 · Policy ── */
-  #s4-content .serif-title{margin-bottom:36px!important}
+  /* ── Slide 4 · Policy ── */
+  #s4 .serif-title{margin-bottom:36px!important}
   .policy-grid{gap:30px}
   .policy-row{gap:0 20px}
   .policy-label{font-size:9px;letter-spacing:3px}
   .policy-text{font-size:19px;line-height:1.55}
 
-  /* ── Slide 6 · Mentors ── */
-  #s6{flex-direction:column;overflow-y:auto;-webkit-overflow-scrolling:touch}
+  /* ── Slide 5 · Mentors ── */
+  #s5{flex-direction:column;overflow-y:auto;-webkit-overflow-scrolling:touch}
   .mentor-photo-side{flex:0 0 auto;width:100%;height:38vh;min-height:38vh}
   .mentor-photo-side img{object-position:center 12%}
   .mentor-photo-side::after{
@@ -432,7 +425,7 @@ html,body{width:100%;height:100%;background:var(--navy-deep);overflow:hidden;fon
   .companies-row{flex-direction:column;gap:16px;padding-top:22px}
   .sep-dot{display:none}
 
-  /* ── Slide 7 · CTA ── */
+  /* ── Slide 6 · CTA ── */
   #s7 .cta-pre{font-size:22px}
   #s7 .cta-main{font-size:clamp(34px,9vw,48px)}
   #s7 .cta-btn{padding:15px 32px;margin-top:42px;font-size:10px;letter-spacing:2.5px}
@@ -477,22 +470,8 @@ html,body{width:100%;height:100%;background:var(--navy-deep);overflow:hidden;fon
       <p style="font-family:'Raleway',sans-serif;font-size:10px;font-weight:500;letter-spacing:6px;text-transform:uppercase;color:var(--gold);margin-bottom:28px;opacity:.9;text-shadow:0 2px 20px rgba(0,0,0,.95),0 4px 40px rgba(0,0,0,.7)">Instituto MD Talk</p>
       <h1 class="hero-title" id="heroTitle"><span style="color:#fff">Your</span><br><em style="font-style:italic;color:var(--gold)">Investment</em></h1>
       <p class="hero-sub">Programa de Proficiência em Inglês Médico</p>
-      <button class="visualizar-btn" onclick="navigate(1)" aria-label="Arraste para visualizar">
-        <svg class="swipe-icon" width="72" height="44" viewBox="0 0 72 44" fill="none" stroke="#fff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <g class="swipe-trail">
-            <path d="M54 14 L62 14"/>
-            <path d="M56 22 L64 22"/>
-            <path d="M54 30 L62 30"/>
-          </g>
-          <g class="swipe-hand">
-            <path d="M40 22 L18 22"/>
-            <circle cx="16" cy="22" r="1.7" fill="#fff" stroke="none"/>
-            <path d="M40 16 Q40 12 44 12 L48 12 Q52 12 52 16 L52 28 Q52 32 48 32 L44 32 Q40 32 40 28 Z"/>
-            <path d="M38 19 L38 16"/>
-            <path d="M38 25 L38 28"/>
-          </g>
-        </svg>
-        <span>Arraste para visualizar</span>
+      <button class="visualizar-btn" onclick="navigate(1)" aria-label="Visualizar proposta">
+        Visualizar Proposta
       </button>
     </div>
   </div>
@@ -533,52 +512,58 @@ html,body{width:100%;height:100%;background:var(--navy-deep);overflow:hidden;fon
     </div>
   </div>
 
-  <!-- ── SLIDE 4 · CURADORIA ── -->
+  <!-- ── SLIDE 4 · CURATION ── -->
   <div class="slide" id="s4">
     <div class="dot-grid"></div>
-    <div class="s4-overlay" style="position:absolute;inset:0;background:rgba(5,13,26,.70);transition:background .6s ease;z-index:1;"></div>
-    <div class="geo ring" style="width:340px;height:340px;top:-80px;left:-100px;opacity:.35;animation-delay:1.5s;position:absolute;z-index:2;"></div>
-    <div class="geo diamond" style="width:60px;height:60px;bottom:80px;right:100px;animation-delay:3s;position:absolute;z-index:2;"></div>
-    <div id="s4c-content" style="width:100%;max-width:860px;position:relative;z-index:2;">
-      <p class="overline">Estudo Estratégico · Add-on Premium</p>
-      <h2 class="serif-title" style="font-size:clamp(38px,5vw,56px);text-align:left;margin-bottom:18px">Curadoria <em class="gold-em">Personalizada</em></h2>
-      <p style="font-size:clamp(14px,1.4vw,16px);color:rgba(255,255,255,1);line-height:1.75;margin-bottom:36px;max-width:640px;">Uma alternativa estratégica para quem estuda com propósito — não com pressa.</p>
-
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:40px;">
-        <div style="border-left:1px solid var(--gold);padding-left:20px;">
-          <p style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">O que é</p>
-          <p style="font-size:clamp(13px,1.3vw,15px);color:rgba(255,255,255,1);line-height:1.7;">A Curadoria não é material genérico. É um plano de estudo construído especificamente para você — com base no seu nível, nos seus objetivos e no que se revelou necessário dentro das próprias aulas.</p>
+    <div class="s4-overlay" style="position:absolute;inset:0;background:rgba(5,13,26,.72);transition:background .6s ease;z-index:1;"></div>
+    <div class="geo ring" style="width:360px;height:360px;top:-120px;right:-100px;opacity:.28;animation-delay:1s"></div>
+    <div class="geo diamond" style="width:44px;height:44px;bottom:110px;left:80px;opacity:.5;animation-delay:3s"></div>
+    <div id="s4-content" style="width:100%;max-width:1100px;position:relative;z-index:2;">
+      <p class="overline" style="text-align:left">Estudo Dirigido · Acompanhamento Semanal</p>
+      <h2 class="serif-title" style="font-size:clamp(38px,5vw,58px);text-align:left;margin-bottom:44px">Estudo sem direção<br>não é estudo — é <em class="gold-em">desperdício.</em></h2>
+      <div class="curation-grid">
+        <!-- Coluna esquerda: o que é -->
+        <div class="curation-col">
+          <p class="policy-label" style="margin-bottom:18px">O que é a Curadoria</p>
+          <p class="policy-text" style="margin-bottom:20px">Material estratégico e personalizado, preparado por mim com base no que <em style="color:var(--gold);font-style:italic">você</em> demonstrou precisar nas aulas — gramática, vocabulário, estrutura, fluência.</p>
+          <div class="curation-items">
+            <div class="curation-item"><span class="curation-dot"></span>Explicações direcionadas ao seu nível</div>
+            <div class="curation-item"><span class="curation-dot"></span>Exemplos aplicados à sua realidade clínica</div>
+            <div class="curation-item"><span class="curation-dot"></span>Exercícios estratégicos e casos práticos</div>
+            <div class="curation-item"><span class="curation-dot"></span>Materiais avançados quando necessário</div>
+          </div>
         </div>
-        <div style="border-left:1px solid var(--gold);padding-left:20px;">
-          <p style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Como funciona</p>
-          <p style="font-size:clamp(13px,1.3vw,15px);color:rgba(255,255,255,1);line-height:1.7;">A aula é onde você pratica. A Curadoria é onde você consolida, aprofunda e acelera. Cada entrega inclui explicações direcionadas, exemplos clínicos, exercícios estratégicos e, quando necessário, artigos, casos e simulações.</p>
+        <!-- Coluna direita: preços -->
+        <div class="curation-col">
+          <p class="policy-label" style="margin-bottom:18px">Investimento</p>
+          <div class="curation-price-block">
+            <div class="curation-price-row">
+              <div>
+                <p class="curation-price-label">Para alunos do plano de aulas</p>
+                <p class="curation-price-sub">Complemento semanal ao programa</p>
+              </div>
+              <div class="curation-price-val">R$ 500<span style="font-size:14px">,00<br><span style="font-size:11px;letter-spacing:2px;font-family:'Raleway',sans-serif;color:var(--muted)">/ mês</span></span></div>
+            </div>
+            <div class="curation-divider"></div>
+            <div class="curation-price-row">
+              <div>
+                <p class="curation-price-label">Somente a Curadoria</p>
+                <p class="curation-price-sub">Acompanhamento semanal independente</p>
+              </div>
+              <div class="curation-price-val">R$ 900<span style="font-size:14px">,00<br><span style="font-size:11px;letter-spacing:2px;font-family:'Raleway',sans-serif;color:var(--muted)">/ mês</span></span></div>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div style="background:rgba(196,164,90,.08);border:1px solid rgba(196,164,90,.3);border-radius:4px;padding:28px 32px;display:grid;grid-template-columns:1fr 1fr;gap:0;">
-        <div style="border-right:1px solid rgba(196,164,90,.2);padding-right:32px;">
-          <p style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Para alunos com plano ativo</p>
-          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4vw,48px);color:var(--gold-pale);line-height:1;">R$&nbsp;500<span style="font-size:16px;color:rgba(255,255,255,.5)">,00&nbsp;/&nbsp;mês</span></p>
-          <p style="font-size:12px;color:rgba(255,255,255,.42);margin-top:8px;">Acompanhamento semanal incluso</p>
-        </div>
-        <div style="padding-left:32px;">
-          <p style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Curadoria avulsa</p>
-          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4vw,48px);color:var(--gold-pale);line-height:1;">R$&nbsp;900<span style="font-size:16px;color:rgba(255,255,255,.5)">,00&nbsp;/&nbsp;mês</span></p>
-          <p style="font-size:12px;color:rgba(255,255,255,.42);margin-top:8px;">Acompanhamento semanal incluso</p>
-        </div>
-      </div>
-
-      <p style="font-size:clamp(12px,1.2vw,14px);color:rgba(255,255,255,.42);margin-top:20px;font-style:italic;">Fim do estudo solto e sem direção. No lugar, um caminho claro, técnico e eficiente.</p>
     </div>
   </div>
 
-  <!-- ── SLIDE 5 · POLICY ── -->
-  <div class="slide" id="s5">
+  <div class="slide" id="s5b">
     <div class="dot-grid"></div>
-    <div class="s4-overlay" style="position:absolute;inset:0;background:rgba(5,13,26,.70);transition:background .6s ease;z-index:1;"></div>
+    <div class="s5b-overlay" style="position:absolute;inset:0;background:rgba(5,13,26,.70);transition:background .6s ease;z-index:1;"></div>
     <div class="geo ring" style="width:420px;height:420px;bottom:-170px;right:-150px;opacity:.3;animation-delay:1s"></div>
     <div class="geo ring" style="width:160px;height:160px;top:80px;right:80px;opacity:.35;animation-delay:4s"></div>
-    <div id="s4-content" style="width:100%;max-width:1180px;position:relative;z-index:2;">
+    <div id="s5b-content" style="width:100%;max-width:1180px;position:relative;z-index:2;">
       <p class="overline" style="text-align:left">Termos & Condições</p>
       <h2 class="serif-title" style="font-size:clamp(42px,5.5vw,60px);text-align:left;margin-bottom:56px">The <em class="gold-em">Terms</em></h2>
       <div class="policy-grid">
@@ -811,24 +796,24 @@ s3content.addEventListener('mouseleave', () => { s3overlay.style.background = 'r
 s3content.addEventListener('touchstart', () => { s3overlay.style.background = 'rgba(5,13,26,.93)'; }, {passive:true});
 s3content.addEventListener('touchend', () => { setTimeout(() => { s3overlay.style.background = 'rgba(5,13,26,.70)'; }, 800); }, {passive:true});
 
-// Hover slide 4 (Curadoria)
-const s4cOverlay = document.querySelector('#s4 .s4-overlay');
-const s4cContent = document.getElementById('s4c-content');
-if(s4cOverlay && s4cContent){
-  s4cContent.addEventListener('mouseenter', () => { s4cOverlay.style.background = 'rgba(5,13,26,.93)'; });
-  s4cContent.addEventListener('mouseleave', () => { s4cOverlay.style.background = 'rgba(5,13,26,.70)'; });
-  s4cContent.addEventListener('touchstart', () => { s4cOverlay.style.background = 'rgba(5,13,26,.93)'; }, {passive:true});
-  s4cContent.addEventListener('touchend', () => { setTimeout(() => { s4cOverlay.style.background = 'rgba(5,13,26,.70)'; }, 800); }, {passive:true});
+// Hover slide 4
+// Hover slide 4 (curation)
+const s4overlay = document.querySelector('#s4 .s4-overlay');
+const s4content = document.getElementById('s4-content');
+if(s4overlay && s4content){
+  s4content.addEventListener('mouseenter', () => { s4overlay.style.background = 'rgba(5,13,26,.93)'; });
+  s4content.addEventListener('mouseleave', () => { s4overlay.style.background = 'rgba(5,13,26,.72)'; });
+  s4content.addEventListener('touchstart', () => { s4overlay.style.background = 'rgba(5,13,26,.93)'; }, {passive:true});
+  s4content.addEventListener('touchend', () => { setTimeout(() => { s4overlay.style.background = 'rgba(5,13,26,.72)'; }, 800); }, {passive:true});
 }
-
-// Hover slide 5 (Policy)
-const s5overlay = document.querySelector('#s5 .s4-overlay');
-const s5content = document.getElementById('s4-content');
-if(s5overlay && s5content){
-  s5content.addEventListener('mouseenter', () => { s5overlay.style.background = 'rgba(5,13,26,.93)'; });
-  s5content.addEventListener('mouseleave', () => { s5overlay.style.background = 'rgba(5,13,26,.70)'; });
-  s5content.addEventListener('touchstart', () => { s5overlay.style.background = 'rgba(5,13,26,.93)'; }, {passive:true});
-  s5content.addEventListener('touchend', () => { setTimeout(() => { s5overlay.style.background = 'rgba(5,13,26,.70)'; }, 800); }, {passive:true});
+// Hover slide 5b (policy)
+const s5bovl = document.querySelector('#s5b .s5b-overlay');
+const s5bcnt = document.getElementById('s5b-content');
+if(s5bovl && s5bcnt){
+  s5bcnt.addEventListener('mouseenter', () => { s5bovl.style.background = 'rgba(5,13,26,.93)'; });
+  s5bcnt.addEventListener('mouseleave', () => { s5bovl.style.background = 'rgba(5,13,26,.70)'; });
+  s5bcnt.addEventListener('touchstart', () => { s5bovl.style.background = 'rgba(5,13,26,.93)'; }, {passive:true});
+  s5bcnt.addEventListener('touchend', () => { setTimeout(() => { s5bovl.style.background = 'rgba(5,13,26,.70)'; }, 800); }, {passive:true});
 }
 
 // Mobile: touch anywhere on slide 1
